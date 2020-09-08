@@ -2,6 +2,7 @@
 target/
 *.versionsBackup
 .factorypath
+out/
 
 # eclipse ignore
 .settings/

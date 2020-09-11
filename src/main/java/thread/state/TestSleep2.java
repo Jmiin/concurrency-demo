@@ -1,0 +1,25 @@
+package thread.state;
+
+/**
+ * 使用sleep模拟倒计时
+ *
+ * @author JiangMin 2020/09/09 14:28
+ */
+public class TestSleep2 {
+
+    public static void main(String[] args) throws InterruptedException {
+        tenDown();
+    }
+
+    public static void tenDown() throws InterruptedException {
+        int num = 10;
+
+        while (true){
+            Thread.sleep(1000);
+            System.out.println(num--);
+            if (num <= 0 ) {
+                break;
+            }
+        }
+    }
+}

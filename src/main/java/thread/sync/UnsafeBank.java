@@ -59,24 +59,26 @@ class WithDrawing extends Thread {
 
     // 判断有没有钱
     @Override
-    public void run() {
+    public synchronized void run() {
 
-        if (account.money - drawingMoney <= 0) {
-            System.out.println(Thread.currentThread().getName() + " Account has not enought money.");
-            return;
-        }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            //logger.error("inputParams:{} and errorMessage:{}",null, e.getMessage(), e);
+            if (account.money - drawingMoney <= 0) {
+                System.out.println(Thread.currentThread().getName() + " Account has not enought money.");
+                return;
+            }
 
-        }
+            try {
+                Thread.sleep(8000);
+            } catch (InterruptedException e) {
+                //logger.error("inputParams:{} and errorMessage:{}",null, e.getMessage(), e);
 
-        account.money = account.money - drawingMoney;
-        nowMoney = nowMoney + drawingMoney;
+            }
 
-        System.out.println(account.name+"余额:"+account.money);
-        System.out.println(this.getName()+"手里的钱："+nowMoney);
+            account.money = account.money - drawingMoney;
+            nowMoney = nowMoney + drawingMoney;
+
+            System.out.println(account.name+"余额:"+account.money);
+            System.out.println(this.getName()+"手里的钱："+nowMoney);
+
     }
 }
